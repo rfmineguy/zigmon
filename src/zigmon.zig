@@ -26,6 +26,8 @@ pub fn Watcher(comptime T: type) type {
         on_delete: ?*const fn (watcher: Self, path: []const u8) void = null,
         on_modify: ?*const fn (watcher: Self, path: []const u8) void = null,
         on_move: ?*const fn (watcher: Self, path: []const u8, old: []const u8) void = null,
+        
+        user_ptr: ?*anyopaque = null,
 
         raw: ?Raw.WatchID = null,
         flags: Flags = .{}, // Cannot be changed once watch() has been ran.
